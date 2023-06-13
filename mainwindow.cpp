@@ -30,10 +30,9 @@ void MainWindow::on_pushButton_2_clicked()
     QString password = ui->password->text();
 
     if (login == "u1" && password == "123"){
-        QMessageBox::about(this, "Title", "you are logged");
+        QMessageBox::information(this, "Title", "you are logged");
     }
     else{
-        delete ui;
         QMessageBox::warning(this, "Title", "you are not logged");
     }
 }
