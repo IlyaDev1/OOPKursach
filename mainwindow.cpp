@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QDebug>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,19 +16,24 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
 void MainWindow::on_pushButton_clicked()
 {
-    ui->label->setText("кнопка нажата");
+    hide();
+    window = new Window2(this);
+    window->show();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QMessageBox::StandardButton answer = QMessageBox::question(this, "Title", "TextInside", QMessageBox::Yes | QMessageBox::No);
+    QString login = ui->login->text();
+    QString password = ui->password->text();
 
-    if (answer == QMessageBox::Yes){
-        QApplication::quit();
+    if (login == "u1" && password == "123"){
+        QMessageBox::about(this, "Title", "you are logged");
     }
     else{
-        qDebug() << "No";
+        delete ui;
+        QMessageBox::warning(this, "Title", "you are not logged");
     }
 }
